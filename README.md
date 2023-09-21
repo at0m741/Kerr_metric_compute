@@ -1,6 +1,6 @@
-# Kerr_compute programm in C language
+# Kerr compute programm in C language
 
-This project is a compute programm of the Kerr metric componant using the C programming language and the GNU Scientific Library (GSL). The Kerr metric is a solution to Einstein's equations of general relativity that describes the spacetime around a rotating black hole.
+This project is a compute programm of the Kerr metric componants using the C programming language and the GNU Scientific Library (GSL). The Kerr metric is a solution to Einstein's equations of general relativity that describes the spacetime around a rotating black hole.
 
 ## Compilation and Execution
 
