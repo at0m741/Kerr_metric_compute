@@ -9,7 +9,13 @@ int main(int argc, char **argv)
     }
 
     double r = atof(argv[1]);
-    double a = 1.0;
+    if (r < 0)
+    {   
+        printf("La coordonnée radiale r ne peut pas etre négative\n");
+        return -1;
+    }
+
+    double a = 0.9;
     double theta = M_PI / 2.0;
     double Msun = 1.988e30;
     double M = 4.31e6 * Msun;
@@ -35,34 +41,34 @@ int main(int argc, char **argv)
     printf("Rs = %lf m\n\n", Rs);
 
     printf("-----Calcul des composants de la metrique de Kerr-----\n\n");
+
     if (g_rr < 0)
     {
-        printf("composant g_rr negatif car r = 0 donc singularité.\n");
         printf("A cette valeur de r, ce composant indique l'horizon des evenements.\n\n");
     }
-    if (g_tt < 0)
+    if (r == 0)
     {
-        printf("r < 0, l'observateur se situe a l'interieur de l'horizon, donc g_{tt} < 0.\n\n");
+        printf("Si r = 0, l'observateur se trouve au centre du trou noir en présence d'une singularité gravitationnelle.\n");
         printf("g^{rr} = %f\n", g_rr);
         printf("g^{rr} = %f\n", g_rr2);
-        printf("g_{tt} = %f\n", g_tt);
-        printf("g^{tt} = %f\n", g_tt2);
-        printf("g_{tp} = %f\n", g_tp);                
-        printf("g^{tp} = %f\n", g_tp2);
-        printf("g_{pp} = %f\n", g_pp);
-        printf("g^{pp} = %f\n", g_pp2);
+        printf("g_{tt} = %f s^2/m2\n", g_tt);
+        printf("g^{tt} = %f s^2/m^2\n", g_tt2);
+        printf("g_{tp} = %f s/m\n", g_tp);                
+        printf("g^{tp} = %f s/m\n", g_tp2);
+        printf("g_{pp} = %f s^2/m\n", g_pp);
+        printf("g^{pp} = %f s^2/m\n", g_pp2);
     }
     
     else
     {
         printf("g^{rr} = %f\n", g_rr);
         printf("g^{rr} = %f\n", g_rr2);
-        printf("g_{tt} = %f\n", g_tt);
-        printf("g^{tt} = %f\n", g_tt2);
-        printf("g_{tp} = %f\n", g_tp);                
-        printf("g^{tp} = %f\n", g_tp2);
-        printf("g_{pp} = %f\n", g_pp);
-        printf("g^{pp} = %f\n", g_pp2);
+        printf("g_{tt} = %f s^2/m2\n", g_tt);
+        printf("g^{tt} = %f s^2/m^2\n", g_tt2);
+        printf("g_{tp} = %f s/m\n", g_tp);                
+        printf("g^{tp} = %f s/m\n", g_tp2);
+        printf("g_{pp} = %f s^2/m\n", g_pp);
+        printf("g^{pp} = %f s^2/m\n", g_pp2);
     }
 
     printf("\n");
