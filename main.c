@@ -1,8 +1,14 @@
 #include "header1.h"
+#include <stdlib.h>
 
-int main() 
+int main(int argc, char **argv) 
 {
-    double r = 0;
+    if (argc != 2) {
+        printf("Usage: %s <value_of_r>\n", argv[0]);
+        return 1;
+    }
+
+    double r = atof(argv[1]);
     double a = 1.0;
     double theta = M_PI / 2.0;
     double Msun = 1.988e30;
