@@ -80,6 +80,17 @@ double kerr_metric_g_pp2(double r, double M, double delta)
     return g_pp2;
 }
 
+double kerr_metric_g_thth(double r, int a , double theta)
+{
+    double angle_degrees = 30.0;
+    double angle_radians = angle_degrees * M_PI / 180.0;
+    double cos_squared = pow(cos(angle_radians), 2);
+
+    double g_theta = gsl_pow_2(r) + gsl_pow_2(a) * cos_squared * (theta);
+
+    return g_theta;
+}
+
 double schwarz_radius(double G, double M, double c)
 {
     double Rs = (2 * G * M) / gsl_pow_2(c);

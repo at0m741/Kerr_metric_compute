@@ -4,7 +4,7 @@ CC = gcc
 CFLAGS = -Wall -g -Werror -Wextra
 LIBS = -lgsl -lgslcblas -lm
 
-SRCS = kerr_composant.c main.c
+SRCS = kerr_composant.c main.c geodesics_commons.c
 OBJS = $(SRCS:.c=.o)
 
 $(PROG_NAME): $(OBJS)

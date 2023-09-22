@@ -15,7 +15,7 @@ int main(int argc, char **argv)
         return -1;
     }
 
-    double a = 0.9;
+    double a = 1;
     double theta = M_PI / 2.0;
     double Msun = 1.988e30;
     double M = 4.31e6 * Msun;
@@ -33,6 +33,7 @@ int main(int argc, char **argv)
     double g_tp2 = kerr_metric_g_tp2(r, M, a);
     double g_pp = kerr_metric_g_pp(r, A);
     double g_pp2 = kerr_metric_g_pp2(r, M, delta);
+    double g_thth = kerr_metric_g_thth(r, a, theta);
     
 
     printf("\n");
@@ -41,6 +42,8 @@ int main(int argc, char **argv)
     printf("Rs = %lf m\n\n", Rs);
 
     printf("-----Calcul des composants de la metrique de Kerr-----\n\n");
+
+    printf("La signature de la metrique est la suivante (-+++)\n\n");
 
     if (g_rr < 0)
     {
@@ -57,6 +60,7 @@ int main(int argc, char **argv)
         printf("g^{tp} = %f s/m\n", g_tp2);
         printf("g_{pp} = %f s^2/m\n", g_pp);
         printf("g^{pp} = %f s^2/m\n", g_pp2);
+        printf("g_{thth} = %f\n", g_thth);
     }
     
     else
@@ -69,9 +73,28 @@ int main(int argc, char **argv)
         printf("g^{tp} = %f s/m\n", g_tp2);
         printf("g_{pp} = %f s^2/m\n", g_pp);
         printf("g^{pp} = %f s^2/m\n", g_pp2);
+        printf("g_{thth} = %f\n ", g_thth);
     }
 
     printf("\n");
-    printf("(si g^{tt} = inf, cela veut dire que pour r, g^{tt} correspond à l'horizon.)\n");
+    printf("(si g^{tt} = inf, cela veut dire que pour r, g^{tt} correspond à l'horizon.)\n\n");
+
+    printf("-----------Geodesics related computes-----------\n\n");
+
+    double sigma = kerr_sigma(r, a, theta);
+    double L = Angular_momentum(r, a, delta);
+    double time = time_eq(a,delta, r, M, theta, c);
+    double E = kerr_energy(M, c);
+    double Q = carter_Q(a, theta, r, delta);
+    double dr = kerr_dr(delta, sigma, r, E, a, Q, L);
+
+    printf("Sigma = %f\n", sigma);
+    printf("Delta = %f\n", delta);
+    printf("E = %f\n", E);
+    printf("dt = %f\n", time);
+    printf("Q = %f\n", Q);
+    printf("dr = %f\n\n", dr);
+
     return 0;
+
 }
