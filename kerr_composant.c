@@ -20,10 +20,8 @@ double horizon_A(double r, double a, double M)
 
 
 double kerr_metric_g_rr(double r, double a, double theta) {
-    double Sigma = r * r + a * a * gsl_pow_2(cos(theta));
-    double Delta = r * r - 2.0 * r * a + a * a;
-
-    return Delta / Sigma;
+    double Delta = kerr_delta(r, a, theta);
+    return gsl_pow_2(r) / Delta;
 }
 
 double kerr_metric_g_rr2(double r, double M, double a)
@@ -97,3 +95,4 @@ double schwarz_radius(double G, double M, double c)
 
     return Rs; 
 }
+
