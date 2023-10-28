@@ -3,7 +3,8 @@
 
 int main(int argc, char **argv) 
 {
-    if (argc != 2) {
+    if (argc != 2) 
+    {
         printf("Usage: %s <value_of_r>\n", argv[0]);
         return 1;
     }
@@ -116,12 +117,11 @@ int main(int argc, char **argv)
 
     printf("--------------------computes--------------------\n\n");
 
-    double partial_grr = cristofell_g_rr(r, M, time);
-    double partial_gtt = cristofell_g_tt(r, M);
+    double cris_tt = christoffel_g_rr(M, r, a);
+    double cris_rr = christoffel_g_tt(r, a, M);
 
-    printf("La dérivée de g^{rr} à r = %lf est : %lf\n", r, partial_grr);
-    printf("La dérivée de g^{tt} à r = %lf est : %lf\n", r, partial_gtt);
-    
+    printf("Christoffel symbol g_tt = %f\n", cris_tt);
+    printf("Christoffel symbol g_rr = %f\n", cris_rr);
 
     FILE *gnuplot = popen("gnuplot -persistent", "w");
     fprintf(gnuplot, "set title 'Kerr Metric Components'\n");

@@ -23,4 +23,8 @@ double kerr_matrix_boyer_lindquist(double r, double M, int theta, int a, double 
     return g[4][4];
 }
 
+double photon_radius(double M, double a) {
+    double r_photon = 2 * M * (1 + cos(2/3 * acos(-a / M)));
 
+    return r_photon;
+}

@@ -25,6 +25,8 @@ double schwarz_radius(double G, double M, double c);
 //Kerr Metric components in Boyer-Lindquist coordinates
 
 double kerr_matrix_boyer_lindquist(double r, double M, int theta, int a, double p);
+double photon_radius(double M, double a);
+
 //Geodesics related equations
 
 double kerr_energy(int a, double r, double M, double A, int theta, double delta); 
@@ -41,14 +43,7 @@ double dphi(double L, int theta, int a, double r, double E, double sigma, double
 
 double function(double x);
 double partial_derivative(double x, double h);
-double cristofell_g_rr(double r, int a, double theta);
-double cristofell_g_tt(double r, double M);
-
-//Matrix
-typedef struct {
-    double **matrix;
-    int rows;
-    int cols;
-} Matrix;
+double christoffel_g_tt(double M, double r, int a);
+double christoffel_g_rr(double r, int a, double M);
 
 #endif
